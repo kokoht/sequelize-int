@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='style.css' />
+    <title> seqintro </title>
+  </head>
+  <body>
+<br>
+<br>
+<h1> SUBJECT DATA </h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+            <th> Subject Name </th>
+          </tr>
+        </thead>
+      <tbody>
+        <% panggilData.forEach(function(subject) { %>
+      <tr>
+      <th> <%= subject.id %> </th>
+      <th> <%= subject.subject_name %> </th>
+      </tr>
+          <%  }) %>
+      </tbody>
+    <table>
+<br>
+<br>
+<br>
+
+        </body>
+      </html>
