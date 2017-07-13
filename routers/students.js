@@ -29,7 +29,12 @@ router.post('/', function(req, res){
   .then(function(){
     res.redirect('/students')
   })
-})
+  .catch(err => {
+    res.render('errorpage', {
+	     panggilData: err.message}
+      )
+    })
+  })
 
 
 //================= edit using sequelize syntax
@@ -56,6 +61,11 @@ router.post('/edit/:id', function(req,res){
   .then(() => {
     res.redirect('/students')
   })
+  .catch(err => {
+    res.render('errorpage', {
+	     panggilData: err.message}
+      )
+    })
   });
 
 // delete
