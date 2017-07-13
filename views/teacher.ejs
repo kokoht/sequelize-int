@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='style.css' />
+    <title> seqintro </title>
+  </head>
+  <body>
+    <br>
+    <br>
+    <h1> TEACHER DATA </h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+            <th> First Name </th>
+            <th> Last Name </th>
+            <th> Email </th>
+          </tr>
+        </thead>
+
+      <tbody>
+        <% panggilData.forEach(function(teacher) { %>
+      <tr>
+      <th> <%= teacher.id %> </th>
+      <th> <%= teacher.first_name %> </th>
+      <th> <%= teacher.last_name %> </th>
+      <th> <%= teacher.email %> </th>
+      </tr>
+          <%  }) %>
+      </tbody>
+    <table>
+<br>
+<br>
+<br>
+
+        </body>
+      </html>

@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>  seqintro </title>
+  </head>
+  <body>
+
+<br>
+<h1>Edit Student Data </h1>
+<a href="/students"> Show All Data </a>
+
+<form action="/students/edit/<%= panggilData.id %>" method="post">
+  First Name:
+  <input type="text" name="first_name" value='<%= panggilData.first_name %>'><br>
+  Last Name:
+  <input type="text" name="last_name" value='<%= panggilData.last_name %>'><br>
+  Email:
+  <input type="text" name="email" value='<%= panggilData.email %>'><br>
+  Jurusan:
+  <input type="text" name="jurusan" value='<%= panggilData.jurusan %>'><br>
+  
+  <button type="submit">Submit Editing</button>
+</form>
+</body>
+</html>

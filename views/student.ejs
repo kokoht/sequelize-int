@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='style.css' />
+    <title> seqintro </title>
+  </head>
+  <body>
+    <h1> Students Data </h1>
+    <a href="students/add"> Add Student </a>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+            <th> First Name </th>
+            <th> Last Name </th>
+            <th> Email </th>
+            <th> Jurusan </th>
+          <th> Options </th>
+          </tr>
+        </thead>
+      <tbody>
+        <% if(panggilData) {panggilData.forEach(function(student) { %>
+      <tr>
+      <th> <%= student.id %> </th>
+      <th> <%= student.first_name %> </th>
+      <th> <%= student.last_name %> </th>
+      <th> <%= student.email %> </th>
+      <th> <%= student.jurusan %> </th>
+      <th><a href="/students/edit/<%= student.id %>">Edit</a></th>
+      <th> <a href="/students/delete/<%= student.id %>">Delete</a> </th>
+      </tr>
+        <%  })} %>
+      </tbody>
+    <table>
+<br>
+<br>
+<br>
+  </body>
+</html>
