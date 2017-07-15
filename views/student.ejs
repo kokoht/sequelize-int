@@ -11,22 +11,25 @@
     <table>
       <thead>
         <tr>
-          <th>Id</th>
+          <th> No </th>
             <th> First Name </th>
             <th> Last Name </th>
             <th> Email </th>
             <th> Jurusan </th>
+            <th> Action </th>
           <th> Options </th>
           </tr>
         </thead>
       <tbody>
+        <% let number = 1 %>
         <% if(panggilData) {panggilData.forEach(function(student) { %>
       <tr>
-      <th> <%= student.id %> </th>
+      <th> <%= number++ %> </th>
       <th> <%= student.first_name %> </th>
       <th> <%= student.last_name %> </th>
       <th> <%= student.email %> </th>
       <th> <%= student.jurusan %> </th>
+      <th><a href="/students/<%= student.id %>/addsubject">Add Subject</a></th>
       <th><a href="/students/edit/<%= student.id %>">Edit</a></th>
       <th> <a href="/students/delete/<%= student.id %>">Delete</a> </th>
       </tr>

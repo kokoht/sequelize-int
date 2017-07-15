@@ -9,24 +9,28 @@
     <br>
     <br>
     <h1> TEACHER DATA </h1>
-
+    <a href="teachers/add"> Add Teacher </a>
     <table>
       <thead>
         <tr>
-          <th>Id</th>
+          <th> No </th>
             <th> First Name </th>
             <th> Last Name </th>
             <th> Email </th>
+            <th> Subject </th>
           </tr>
         </thead>
-
       <tbody>
+        <% let number = 1 %>
         <% panggilData.forEach(function(teacher) { %>
       <tr>
-      <th> <%= teacher.id %> </th>
+      <th> <%= number++ %> </th>
       <th> <%= teacher.first_name %> </th>
       <th> <%= teacher.last_name %> </th>
       <th> <%= teacher.email %> </th>
+      <th> <%= teacher.subject_name %> </th>
+      <th><a href="/teachers/edit/<%= teacher.id %>">Edit</a></th>
+      <th> <a href="/teachers/delete/<%= teacher.id %>">Delete</a> </th>
       </tr>
           <%  }) %>
       </tbody>

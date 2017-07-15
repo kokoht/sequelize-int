@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> seq association </title>
+  </head>
+  <body>
+    <h1>Give Score Page </h1>
+    <form action="/subjects/<%=panggilData.StudentId%>/givescore/<%=panggilData.SubjectId%>" method="post">
+         Student Name:
+          <p> <%= panggilData.Student.first_name + panggilData.Student.last_name%></p>
+        Subject Name:
+          <p> <%=panggilData.Subject.subject_name%> </p>
+        Score:
+          <input name='Score' placeholder="input score">
+          <br>
+            <button type="submit"> submit </button>
+    </form>
+  </body>
+</html>

@@ -8,27 +8,29 @@
   <body>
 <br>
 <br>
-<h1> SUBJECT DATA </h1>
-
+ <h1> SUBJECT DATA </h1>
     <table>
       <thead>
         <tr>
           <th>Id</th>
             <th> Subject Name </th>
+            <th> Teacher Name </th>
           </tr>
         </thead>
-      <tbody>
-        <% panggilData.forEach(function(subject) { %>
-      <tr>
-      <th> <%= subject.id %> </th>
-      <th> <%= subject.subject_name %> </th>
-      </tr>
-          <%  }) %>
+  <tbody>
+      <% panggilData.forEach(subject => { %>
+        <tr>
+          <td> <%= subject.id %></td>
+          <td> <%= subject.subject_name%></td>
+          <td>
+            <% subject.Teachers.forEach(info =>{%>
+              <%= info.first_name + info.last_name %><br>
+            <% })%>
+            </td>
+          <td><a href="/subjects/<%= subject.id%>/enrolledstudents">Enrolled Students</a></td>
+        </tr>
+      <%})%>
       </tbody>
     <table>
-<br>
-<br>
-<br>
-
         </body>
       </html>

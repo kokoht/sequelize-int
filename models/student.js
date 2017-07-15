@@ -12,26 +12,30 @@ module.exports = function(sequelize, DataTypes) {
           is: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
           msg: "Email Format Incorrect, Please Input Correct Format"
         },
-        isUnique: function(value, proc){
+        isUnique: function(value, next){
+          // isUnique => custom function bikinan sendiri..
             Student.find({
               where: {
                 email: value
               }
             }).then((err)=> {
               if(err)
-                return proc(`Email already in use !! `);
-              proc();
+                return next(`Email already in use !! `);
+              next();
             })
         }
       }
     },
     jurusan: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+
+  Student.associate = (models) => {
+    Student.belongsToMany(models.Subject, {
+      through: 'StudentSubjects'
+    });
+  }
+
+
+
   return Student;
 };

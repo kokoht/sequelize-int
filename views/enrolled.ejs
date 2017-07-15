@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> seq association </title>
+  </head>
+  <body>
+    <h1><%= panggilData[0].Subject.subject_name%></h1>
+      <a href="/subjects">Return to Subject List</a>
+      <table>
+        <thead>
+          <tr>
+            <th>Name </th>
+            <th>Score </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% panggilData.forEach(student =>{%>
+            <tr>
+              <td><%= student.Student.first_name + student.Student.last_name%></td>
+              <% if(student.Score == null){ %>
+                <td><a href="/subjects/<%=student.StudentId%>/givescore/<%=student.SubjectId%>">Give Score</a></td>
+              <%}else{%>
+                <td><%=student.Score%></td>
+              <%}%>
+            </tr>
+          <%})%>
+        </tbody>
+      </table>
+  </body>
+</html>
