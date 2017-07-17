@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 const Models = require('../models');
+const grading = require('../helpers/grade')
+
 
 // router.get('/', function(req, res){
 //   Models.Subject.findAll()
@@ -94,7 +96,7 @@ router.get('/', function(req, res) {
 router.get('/:id/enrolledstudents', function(req, res){
   //console.log('ttt',Models.StudentSubject);
   Models.StudentSubject.findAll({
-  //  order: [['Student', 'first_name', 'ASC']],
+    order: [['Student', 'first_name', 'ASC']],
      where: {
        SubjectId: req.params.id
      },
@@ -102,43 +104,11 @@ router.get('/:id/enrolledstudents', function(req, res){
   })
   .then(function(data){
     console.log('xxx',data);
-      res.render('enrolled', {panggilData: data
+    let grade = grading(data)
+      res.render('enrolled', {panggilData: data, panggilGrade: grade
       })
   })
 })
-
-// User.findAll({
-//   include: [{
-//     model: Project,
-//     through: {
-//       attributes: ['createdAt', 'startedAt', 'finishedAt'],
-//       where: {completed: true}
-//     }
-//   }]
-// });
-
-// hsl awal = enrolled
-// router.get('/:id/enrolledstudents', function(req, res){
-//   Models.StudentSubject.findAll({
-//     order: [['Student', 'first_name']],
-//     where: {
-//       SubjectId: req.params.id
-//     },
-//     include: [{all: true}]
-//   })
-//   .then(function(data){
-//     console.log(data);
-//       res.render('enrolled', {panggilData: data
-//       })
-//   })
-// })
-
-
-
-
-
-
-
 
 
 // to give score
