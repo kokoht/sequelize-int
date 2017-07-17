@@ -1,13 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-// const DbModel = require('../models/dbmodel');
-//const Teacher = require('../models/teacher');
-// let dbModel = new DbModel('data.db');
+router.get('/', function(req, res, next) {
+  let activeUser = req.session.user
+  res.render('index', { activeUser: activeUser});
+});
 
-
-router.get('/', function (req, res) {
-  res.render('index')
+router.get('/logout', function(req, res, next) {
+  delete req.session.user
+  res.redirect('/')
 })
 
-module.exports = router
+module.exports = router;

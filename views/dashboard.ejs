@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+  <body>
+    <br>
+    <br>
+    <h1> Hi <%- activeUser.username %></h1>
+    <br>
+    <br>
+  <ul>
+    <% options.forEach(option => { %>
+      <li><a href="<%- option %>"><%- option %></a></li>
+    <% })%>
+  </ul>
+  <ul>
+    <li><a>You've been log in AS: <%- activeUser.role %></a></li>
+    <li><a href="/logout">Logout</a></li>
+  </ul>
+  </body>
+</html>
