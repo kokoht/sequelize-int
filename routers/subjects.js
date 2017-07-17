@@ -80,37 +80,72 @@ router.get('/', function(req, res) {
       include: {model: Models.Teacher}
       })
   .then((data1) => {
-    console.log('zzzz', JSON.stringify(data1));
+  //  console.log('zzzz', JSON.stringify(data1));
     res.render('subject', {panggilData: data1})
   })
 });
-//
-// user Teacher
-// subject memo
+
 //
 // db.Subject.findAll({include: {model: db.Teacher}})
 // nanti hasilnya itu di object Subject nya bakal ada Teachers, yang bentuknya sudah objek
 
 //============= start here ============
+
 router.get('/:id/enrolledstudents', function(req, res){
+  //console.log('ttt',Models.StudentSubject);
   Models.StudentSubject.findAll({
-    order: [['Student', 'first_name']],
-    where: {
-      SubjectId: req.params.id
-    },
-    include: [{all:true}]
+  //  order: [['Student', 'first_name', 'ASC']],
+     where: {
+       SubjectId: req.params.id
+     },
+    include: [{all: true}]
   })
   .then(function(data){
+    console.log('xxx',data);
       res.render('enrolled', {panggilData: data
       })
   })
 })
 
+// User.findAll({
+//   include: [{
+//     model: Project,
+//     through: {
+//       attributes: ['createdAt', 'startedAt', 'finishedAt'],
+//       where: {completed: true}
+//     }
+//   }]
+// });
+
+// hsl awal = enrolled
+// router.get('/:id/enrolledstudents', function(req, res){
+//   Models.StudentSubject.findAll({
+//     order: [['Student', 'first_name']],
+//     where: {
+//       SubjectId: req.params.id
+//     },
+//     include: [{all: true}]
+//   })
+//   .then(function(data){
+//     console.log(data);
+//       res.render('enrolled', {panggilData: data
+//       })
+//   })
+// })
+
+
+
+
+
+
+
+
+
 // to give score
 //subject/id/givescore
 
 router.get('/:idst/givescore/:idsu', function(req, res){
-  Models.StudentSubjects.findAll({
+  Models.StudentSubject.findAll({
     where: {
       StudentId: req.params.idst,
       $and: {
@@ -120,12 +155,13 @@ router.get('/:idst/givescore/:idsu', function(req, res){
     include: [{all: true}]
   })
   .then(function(data){
+    console.log('yyy', data);
     res.render('scorepage', {panggilData: data[0]})
   })
 })
 
 router.post('/:idst/givescore/:idsu', function(req, res){
-  Models.StudentSubjects.update({
+  Models.StudentSubject.update({
     Score: req.body.Score
   },{
     where:{

@@ -19,16 +19,21 @@
   Email:
   <input type="text" name="email" value='<%= panggilData.email %>'><br>
 
+  <select name="SubjectId">
+          <option value="<%= panggilData.SubjectId %>"><%= panggilDataDropdown[(panggilData.SubjectId-1)].subject_name %></option>
+          <% panggilDataDropdown.forEach(subject => { %>
+            <option value="<%= subject.id %>"><%= subject.subject_name %></option>
+          <% }) %>
+        </select>
 
-
-  <select name = "SubjectId">
+  <!-- <select name = "SubjectId">   (( - blm selected -))
       <option value "  ">Select Subject:       </option>
       <% panggilDataDropdown.forEach( subject => { %>
       <option value ="<%= subject.id %>">
       <%= subject.subject_name %>
       </option>
       <% }) %>
-  </select>
+  </select> -->
 
 
   <button type="submit">Submit Editing</button>

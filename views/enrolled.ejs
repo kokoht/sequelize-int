@@ -17,7 +17,7 @@
         <tbody>
           <% panggilData.forEach(student =>{%>
             <tr>
-              <td><%= student.Student.first_name + student.Student.last_name%></td>
+              <td><%= student.Student.first_name +' '+ student.Student.last_name%></td>
               <% if(student.Score == null){ %>
                 <td><a href="/subjects/<%=student.StudentId%>/givescore/<%=student.SubjectId%>">Give Score</a></td>
               <%}else{%>

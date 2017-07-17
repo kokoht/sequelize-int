@@ -8,6 +8,7 @@ router.get('/', function(req, res){
     order: [['first_name', 'asc']]
   })
   .then(function(data){
+    console.log(data);
     res.render('student', {
       panggilData: data
     })

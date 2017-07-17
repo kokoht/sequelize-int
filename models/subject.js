@@ -5,13 +5,10 @@ module.exports = function(sequelize, DataTypes) {
   })
   Subject.associate = (models) => {
     Subject.hasMany(models.Teacher)
-    // models => bisa diganti apa aja
-  }
-
-  Subject.associate = (models) => {
     Subject.belongsToMany(models.Student, {
       through: 'StudentSubjects'
     });
+// associate nya 1x saja.. isinya boleh 2..
   }
 
   return Subject;
