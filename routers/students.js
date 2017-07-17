@@ -10,7 +10,8 @@ router.get('/', function(req, res){
   .then(function(data){
     console.log(data);
     res.render('student', {
-      panggilData: data
+      panggilData: data,
+      pageTitle: "Student's"
     })
   })
 })

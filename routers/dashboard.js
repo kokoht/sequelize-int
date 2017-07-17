@@ -6,7 +6,7 @@ const util = require('../helpers/util.js');
 router.get('/', function(req, res, next) {
   let activeUser = req.session.user
   let options = util.manageRole(activeUser.role)
-  res.render('dashboard', { activeUser: activeUser, options: options });
+  res.render('dashboard', { activeUser: activeUser, options: options, pageTitle: "Release2" });
 });
 
 router.get('/', function(req, res, next) {

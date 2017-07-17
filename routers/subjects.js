@@ -83,7 +83,8 @@ router.get('/', function(req, res) {
       })
   .then((data1) => {
   //  console.log('zzzz', JSON.stringify(data1));
-    res.render('subject', {panggilData: data1})
+    res.render('subject', {panggilData: data1,
+    pageTitle: "Subject's"})
   })
 });
 
