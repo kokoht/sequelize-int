@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title> seq association </title>
+    <%- include partials/menubar %>
   </head>
   <body>
     <h1><%= panggilData[0].Subject.subject_name%></h1>
@@ -12,9 +13,11 @@
           <tr>
             <th>Name </th>
             <th>Score </th>
+            <th>  Score Letter </th>
           </tr>
         </thead>
         <tbody>
+          <% var rows = 0 %>
           <% panggilData.forEach(student =>{%>
             <tr>
               <td><%= student.Student.first_name +' '+ student.Student.last_name%></td>
@@ -23,6 +26,8 @@
               <%}else{%>
                 <td><%=student.Score%></td>
               <%}%>
+              <td> <%= panggilGrade[rows] %></td>
+              <% rows++ %>
             </tr>
           <%})%>
         </tbody>
