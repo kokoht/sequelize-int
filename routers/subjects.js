@@ -104,7 +104,7 @@ router.get('/:id/enrolledstudents', function(req, res){
     include: [{all: true}]
   })
   .then(function(data){
-    console.log('xxx',data);
+    //console.log('xxx',data);
     let grade = grading(data)
       res.render('enrolled', {panggilData: data, panggilGrade: grade
       })

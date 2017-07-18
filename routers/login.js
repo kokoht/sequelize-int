@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
+
 const Models = require('../models')
+const crypto = require('crypto');
+const hash = require('../helpers/hash')
 
 router.get('/', function(req, res, next) {
   res.render('login');
@@ -13,9 +16,11 @@ router.post('/', function(req, res, next) {
     where: { username: username }
   })
   .then(user => {
-    if( user.password == password ) {
+    const secret = user.salt;
+    const hashData = hash(secret, password);
+    if(hashData == user.password){
       req.session.user = {
-        username: username,
+        username: user.username,
         role: user.role
       }
       res.redirect('/dashboard')

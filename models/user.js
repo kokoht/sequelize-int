@@ -1,13 +1,21 @@
 'use strict';
+
+const salt = require('../helpers/salt');
+const hash = require('../helpers/hash');
+
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
     username: DataTypes.STRING,
     password: DataTypes.STRING,
-    role: DataTypes.STRING
+    role: DataTypes.STRING,
+    salt: DataTypes.STRING
   }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
+    hooks: {
+      beforeCreate: (models) =>{
+        const secret = salt();
+        const hashData = hash(secret, models.password);
+        models.password = hashData;
+        models.salt = secret;
       }
     }
   });
