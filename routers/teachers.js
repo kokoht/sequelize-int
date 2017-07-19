@@ -52,7 +52,8 @@ router.get('/', function(req, res){
    .then(function(teacherObject){
      console.log('eee',teacherObject);
      res.render('teacher', {
-       panggilData: teacherObject
+       panggilData: teacherObject,
+       pageTitle: "Teacher's"
         })
       })
     })

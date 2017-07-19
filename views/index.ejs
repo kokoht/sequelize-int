@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title> seqintro </title>
+    <title> Release 2 </title>
   </head>
   <body>
-    <h1> WELCOME USER, PLEASE CHOOSE YOUR PREFERENCE: </h1>
-    <a href="/teachers">Teachers List</a>
-    <a>|</a>
-    <a href="/subjects">Subjects List</a>
-    <a>|</a>
-    <a href="/students">Students List</a>
+    <h1>** Welcome User to ACADEMICA APP ** </h1>
+    <% if(activeUser === undefined) { %>
+      <p>You have not login yet</p>
+      <a href="/login"> Login </a>
+    <% } else { %>
+      <p>You've already login </p>
+      <a href="/dashboard"> Dashboard </a>
+    <% }  %>
+    <br>
+    <br>
+    OR
+    <br>
+    <p>Please Sign Up Here:</p>
+    <a href="/signup"> Registration Page </a>
   </body>
 </html>
